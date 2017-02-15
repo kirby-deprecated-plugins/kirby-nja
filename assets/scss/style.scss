@@ -5,7 +5,6 @@
 	margin-bottom: 1em;
 	color: #767676;
 	font-size: 14px;
-	font-family: Arial;
 	user-select: none;
 }
 
@@ -23,11 +22,11 @@
 
 	.nja-icon {
 		background-image: icon('%23' + '000');
-		background-size: 20px;
+		background-size: 1.43em;
 		background-repeat: no-repeat;
 		background-position: 0 center;
-		width: 20px;
-		height: 20px;
+		width: 1.43em;
+		height: 1.43em;
 		margin-right: .5em;
 		opacity: .3;
 	}

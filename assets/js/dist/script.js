@@ -106,21 +106,34 @@ var nja = (function () {
 		group.setAttribute('data-nja-value',count);
 	};
 
+	// GROUP
+	fn.getGroupValue = function(group) {
+		return group.getAttribute('data-nja-value');
+	};
+
 	// ID
 	fn.getId = function(group) {
 		return group.getAttribute('data-nja-group');
 	};
 
 	// AJAX
-	fn.ajax = function(item, group, active, count) {
+	fn.ajax = function(item, group, active, count, value) {
 		var xmlhttp = new XMLHttpRequest();
+		var group_value = fn.getGroupValue(group);
+		var id = fn.getId(group);
 
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
 				if (xmlhttp.status == 200) {
 					fn.removeLoading(group);
 					if(data && typeof data['ajaxCallback'] == 'function') {
-						data.ajaxCallback(active, count, item, group);
+						var args = [];
+						args['count'] = count;
+						args['active'] = !active;
+						args['current'] = fn.getValue(item);
+						args['selected'] = group_value;
+						args['name'] = id;
+						data.ajaxCallback(item, group, args);
 					}
 				}
 				else {
@@ -128,7 +141,7 @@ var nja = (function () {
 			}
 		};
 
-		xmlhttp.open('GET', 'nja/' + group.getAttribute('data-nja-value') + '/' + fn.getId(group), true);
+		xmlhttp.open('GET', 'nja/' + group_value + '/' + id, true);
 		xmlhttp.send();
 	};
 

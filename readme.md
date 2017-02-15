@@ -1,6 +1,6 @@
 # Kirby Nja
 
-*Version 0.2 - Beta*
+*Version 0.3 - Beta*
 
 **Like or dislike a page for Kirby CMS.**
 
@@ -10,6 +10,7 @@
 - Spam protection using IP numbers.
 - Undo likes/dislikes possible.
 - Vanilla js, no jQuery requred.
+- It uses an [optimistic UI approach](https://www.smashingmagazine.com/2016/11/true-lies-of-optimistic-user-interfaces/).
 
 *The name "Nja" is Swedish and means "Maybe".*
 
@@ -68,6 +69,10 @@ If you don't have an own css file, add the following code to your `header.php` s
 echo css('assets/plugins/kirby-nja/css/style.min.css');
 ```
 
+**The `nja-loading` class**
+
+By default the class `nja-loading` is not used, but if you want a loading indicator of some kind you can use this class.
+
 ### Javascript
 
 Add the following code to your `footer.php` snippet:
@@ -79,9 +84,25 @@ nja.init();
 </script>
 ```
 
+**Callback (optional)**
+
+If you need to do something when the like/dislike is saved you can use a callback:
+
+```js
+nja.init({
+  ajaxCallback: function(item, group, args) {
+    console.log(args);
+  }
+});
+```
+
+- `group` is the button group object.
+- `item` is the clicked button object.
+- `args` is an array with data. Use the `console.log` to see what it contains.
+
 ### Snippet
 
-Use the built in snippet or build you own. The built in snippet can be disabled by an option.
+Use the built in snippet or build you own. The built in snippet can be disabled by an option, or overwritten by your own with the same name.
 
 ```php
 snippet('nja');
@@ -134,7 +155,7 @@ If you want to block some ips from being able to vote you can add them as an arr
 
 ### definitions (optional)
 
-Activate the plugin field definitions. Read more about it in Usage/Blueprint.
+Enable or disable the plugin global field definitions.
 
 ### methods (optional)
 
@@ -142,13 +163,19 @@ Enable or disable the plugin page methods.
 
 ### snippet (optional)
 
-Set the name of the built in snippet when calling it. If set to false it will not set it at all.
+Set the name of the built in snippet when calling it. If set to `false` it will not set it at all.
 
 ### panel.page (optional)
 
 All likes/dislikes will be saved as files in a subfolder to the page to keep track on IP numbers to prevent multiple votes from the same visitor. It's possible to use a custom name for this page.
 
 ## Changelog
+
+**0.3**
+
+- More css px values change to em.
+- Removed forces Arial font. It should now inherit the font instead.
+- Callback updated and documented.
 
 **0.2**
 
