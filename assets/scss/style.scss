@@ -1,37 +1,56 @@
-[data-nja-group] {
-  display: flex;
-  margin-bottom: 40px;
-}
+@import 'icon';
 
-/*[data-nja-loading] {
-  outline: 1px solid red;
-}*/
+[data-nja-group] {
+	display: flex;
+	margin-bottom: 1em;
+	color: #767676;
+	font-size: 14px;
+	font-family: Arial;
+	user-select: none;
+}
 
 [data-nja-item] {
-  background-size: 20px;
-  background-repeat: no-repeat;
-  background-position: 10px center;
-  
-  padding: 5px;
-  padding-left: 38px;
-  border: 1px solid #ccc;
-  background-color: #eee;
-  border-radius: 5px;
-  user-select: none;
-  font-size: 14px;
-  font-family: Arial;
-  cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: .5em 1em;
+	border: 1px solid #ddd;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #bbb;
+	background-color: #fafafa;
+	cursor: pointer;
+	border-radius: 5px;
+
+	.nja-icon {
+		background-image: icon('%23' + '000');
+		background-size: 20px;
+		background-repeat: no-repeat;
+		background-position: 0 center;
+		width: 20px;
+		height: 20px;
+		margin-right: .5em;
+		opacity: .3;
+	}
 }
-[data-nja-item]:first-child {
-  background-image: url('../images/thumbs-up.svg');
-  margin-right: 5px;
+
+[data-nja-item="1"] {
+	margin-right: .5em;
+	&.nja-active {
+		.nja-icon {
+			background-image: icon('%23' + '3c763d');
+			opacity: 1;
+		}
+	}
 }
-[data-nja-item]:first-child[data-nja-active] {
-  background-image: url('../images/thumbs-up-green.svg');
-}
-[data-nja-item]:last-child {
-  background-image: url('../images/thumbs-down.svg');
-}
-[data-nja-item]:last-child[data-nja-active] {
-  background-image: url('../images/thumbs-down-red.svg');
+
+[data-nja-item="-1"] {
+	.nja-icon {
+		transform: scale(-1);
+	}
+	&.nja-active {
+		.nja-icon {
+			background-image: icon('%23' + 'a94442');
+			opacity: 1;
+		}
+	}
 }

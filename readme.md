@@ -1,12 +1,29 @@
 # Kirby Nja
 
-*Version 0.1 - Minefield*
+*Version 0.2 - Beta*
 
-Likes and dislikes without an external service.
+**Like or dislike a page for Kirby CMS.**
 
-![Screenshot](docs/screenshot1.gif)
+![Screenshot](docs/screenshot3.gif)
+
+- All data is stored on your domain, not an external service.
+- Spam protection using IP numbers.
+- Undo likes/dislikes possible.
+- Vanilla js, no jQuery requred.
 
 *The name "Nja" is Swedish and means "Maybe".*
+
+## Table of contents
+
+- [Installation](#installation)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Options](#options)
+- [Changelog](#changelog)
+- [Requirements](#requirements)
+- [Disclamer](#disclaimer)
+- [License](#license)
+- [Credits](#credits)
 
 ## Installation
 
@@ -18,18 +35,18 @@ If you are using the [Kirby CLI](https://github.com/getkirby/cli) you can instal
 
 ```
 $ cd path/to/kirby
-$ kirby plugin:install username/plugin-name
+$ kirby plugin:install jenstornell/kirby-nja
 ```
 
 ### 2. Clone or download
 
-1. [Clone](https://github.com/username/plugin-name.git) or [download](https://github.com/username/plugin-name/archive/master.zip)  this repository.
-2. Unzip the archive if needed and rename the folder to `plugin-name`.
+1. [Clone](https://github.com/jenstornell/kirby-nja.git) or [download](https://github.com/jenstornell/kirby-nja/archive/master.zip)  this repository.
+2. Unzip the archive if needed and rename the folder to `kirby-nja`.
 
 **Make sure that the plugin folder structure looks like this:**
 
 ```
-site/plugins/plugin-name/
+site/plugins/kirby-nja/
 ```
 
 ### 3. Git Submodule
@@ -38,7 +55,7 @@ If you know your way around Git, you can download this plugin as a submodule:
 
 ```
 $ cd path/to/kirby
-$ git submodule add https://github.com/username/plugin-name site/plugins/plugin-name
+$ git submodule add https://github.com/jenstornell/kirby-nja site/plugins/kirby-nja
 ```
 
 ## Setup
@@ -133,6 +150,15 @@ All likes/dislikes will be saved as files in a subfolder to the page to keep tra
 
 ## Changelog
 
+**0.2**
+
+- Used classes instead of data attributes in some cases.
+- Improved sass/css.
+- SVG Images as css data uri to prevent blink effect.
+- Red and blue picked from Twitter Bootstrap.
+- Moved to css em instead of px in many cases.
+- Refactored javascript file.
+
 **0.1**
 
 - Initial release 
@@ -143,7 +169,7 @@ All likes/dislikes will be saved as files in a subfolder to the page to keep tra
 
 ## Disclaimer
 
-This plugin is provided "as is" with no guarantee. Use it at your own risk and always test it yourself before using it in a production environment. If you find any issues, please [create a new issue](https://github.com/username/plugin-name/issues/new).
+This plugin is provided "as is" with no guarantee. Use it at your own risk and always test it yourself before using it in a production environment. If you find any issues, please [create a new issue](https://github.com/jenstornell/kirby-nja/issues/new).
 
 ## License
 
@@ -154,3 +180,4 @@ It is discouraged to use this plugin in any project that promotes racism, sexism
 ## Credits
 
 - [Jens Törnell](https://github.com/jenstornell)
+- [Daniel Bruce - Entypo thumb icons](http://www.entypo.com)
