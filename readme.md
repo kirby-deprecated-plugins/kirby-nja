@@ -120,22 +120,9 @@ If you want to see the votes in the panel you can add this to your blueprint:
 
 ```text
 fields:
-  likes: likes
-  dislikes: dislikes
-```
-
-If you don't want to use the built in global field definitions you can use the alternative:
-
-```
-fields:
-  likes:
-    title: Likes
-    type: text
-    width: 1/2
-  dislikes:
-    title: Dislikes
-    type: text
-    width: 1/2
+  nja:
+    title: Likes/dislikes
+    type: nja
 ```
 
 ## Options
