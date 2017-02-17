@@ -4,14 +4,18 @@ use f;
 use c;
 
 class Get {
+	function __construct() {
+		$this->records_slug = c::get('plugin.nja.records.slug', 'nja');
+	}
 	function value($id) {
 		if(!$this->panelPageExists($id)) return 0;
 		if(!$this->panelFileExists($id)) return 0;
+		echo 'sant' . (int)f::read($this->panelPath($id));
 		return (int)f::read($this->panelPath($id));
 	}
 
 	function panelPageExists($id) {
-		return page($id . '/' . c::get('plugin.tja.panel.page', 'nja'));
+		return page($id . '/' . $this->records_slug);
 	}
 
 	function panelFileExists($id) {

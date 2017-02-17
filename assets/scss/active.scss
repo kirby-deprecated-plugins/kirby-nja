@@ -1,0 +1,17 @@
+[data-nja-item="1"] {
+	&.nja-active {
+		.nja-icon {
+			background-image: icon('%23' + '3c763d');
+			opacity: 1;
+		}
+	}
+}
+
+[data-nja-item="-1"] {
+	&.nja-active {
+		.nja-icon {
+			background-image: icon('%23' + 'a94442');
+			opacity: 1;
+		}
+	}
+}

@@ -20,6 +20,18 @@ gulp.task('css', function() {
 	;
 });
 
+gulp.task('field_css', function() {
+	return gulp.src(['assets/scss/field.scss'])
+		.pipe(sass())
+		.pipe(autoprefixer())
+		.pipe(gulp.dest('registry/nja/assets/css'))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(cssmin())
+		.pipe(gulp.dest('registry/nja/assets/css'))
+		.pipe(notify("CSS2 generated!"))
+	;
+});
+
 // JS
 gulp.task('js', function() {
 	gulp.src('assets/js/src/**/*.js')
@@ -34,6 +46,6 @@ gulp.task('js', function() {
 
 // Default
 gulp.task('default',function() {
-	gulp.watch('assets/scss/**/*.scss',['css']);
+	gulp.watch('assets/scss/**/*.scss',['css', 'field_css']);
 	gulp.watch('assets/js/src/**/*.js',['js']);
 });

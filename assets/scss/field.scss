@@ -1,0 +1,58 @@
+@import 'icon';
+@import 'base';
+
+.nja {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.nja >*:first-child {
+  margin-right: .5em;
+}
+
+.nja .btn-negative {
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: normal;
+  padding: .5em 1em;
+}
+
+.nja-message-reset,
+.nja-message-delete {
+	background: #fff;
+	border: 2px solid #ddd;
+	padding: 1em;
+	display: none;
+
+	.nja-group {
+		display: flex;
+	}
+
+	.nja-question {
+		margin-bottom: 1em;
+	}
+
+	.btn {
+		border-radius: 5px;
+		margin-right: .5em;
+		color: #b3000a;
+		font-size: 14px;
+		border: 1px solid #b3000a;
+
+		&:hover {
+			background: #b3000a;
+			color: #fff;
+		}
+	}
+
+	.nja-abort {
+		border-color: #000;
+		color: #000;
+
+		&:hover {
+			color: #fff;
+			background: #000;
+		}
+	}
+}

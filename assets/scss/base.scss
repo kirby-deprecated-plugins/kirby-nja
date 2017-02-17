@@ -1,0 +1,39 @@
+[data-nja-group] {
+	display: flex;
+	margin-bottom: 1em;
+	color: #767676;
+	font-size: 14px;
+}
+
+[data-nja-item] {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: .5em 1em;
+	border: 1px solid #ddd;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #bbb;
+	background-color: #fafafa;
+	border-radius: 5px;
+
+	.nja-icon {
+		background-image: icon('%23' + '000');
+		background-size: 1.43em;
+		background-repeat: no-repeat;
+		background-position: 0 center;
+		width: 1.43em;
+		height: 1.43em;
+		margin-right: .5em;
+		opacity: .3;
+	}
+}
+
+[data-nja-item="1"] {
+	margin-right: .5em;
+}
+
+[data-nja-item="-1"] {
+	.nja-icon {
+		transform: scale(-1);
+	}
+}

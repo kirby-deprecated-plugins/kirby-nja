@@ -128,9 +128,12 @@ var nja = (function () {
 					fn.removeLoading(group);
 					if(data && typeof data['ajaxCallback'] == 'function') {
 						var args = [];
-						args['count'] = count;
+
+						count = (!active) ? parseInt(count)+1 : count;
+
+						args['count'] = parseInt(count);
 						args['active'] = !active;
-						args['current'] = fn.getValue(item);
+						args['current'] = parseInt(fn.getValue(item));
 						args['selected'] = group_value;
 						args['name'] = id;
 						data.ajaxCallback(item, group, args);
@@ -141,7 +144,7 @@ var nja = (function () {
 			}
 		};
 
-		xmlhttp.open('GET', 'nja/' + group_value + '/' + id, true);
+		xmlhttp.open('GET', data.root + '/nja/add/' + group_value + '/' + id, true);
 		xmlhttp.send();
 	};
 

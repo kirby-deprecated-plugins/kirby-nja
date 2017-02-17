@@ -1,6 +1,6 @@
 # Kirby Nja
 
-*Version 0.3 - Beta*
+*Version 0.4 - Beta*
 
 **Like or dislike a page for Kirby CMS.**
 
@@ -80,7 +80,7 @@ Add the following code to your `footer.php` snippet:
 ```php
 <?php echo js('assets/plugins/kirby-nja/js/dist/script.min.js'); ?>
 <script>
-nja.init();
+nja.init({root: '<?php echo u(); ?>'});
 </script>
 ```
 
@@ -90,6 +90,7 @@ If you need to do something when the like/dislike is saved you can use a callbac
 
 ```js
 nja.init({
+  root: '<?php echo u(); ?>',
   ajaxCallback: function(item, group, args) {
     console.log(args);
   }
@@ -143,33 +144,57 @@ The following options can be set in your `/site/config/config.php` file:
 
 ```php
 c::set('plugin.nja.blocked.ips', []);
-c::set('plugin.nja.definitions', true);
-c::get('plugin.nja.methods', true);
+c::get('plugin.nja.dislikes.key', 'dislikes');
+c::get('plugin.nja.likes.key', 'likes');
+c::get('plugin.nja.panel.uri', 'panel');
+c::get('plugin.tja.records.page.slug', 'nja');
+c::get('plugin.tja.records.page.title', '_Nja');
 c::get('plugin.nja.snippet', 'nja');
-c::get('plugin.nja.panel.page', 'nja');
 ```
 
 ### blocked.ips (optional)
 
 If you want to block some ips from being able to vote you can add them as an array.
 
-### definitions (optional)
+### dislikes.key (optional)
 
-Enable or disable the plugin global field definitions.
+The content key for the dislikes counter.
 
-### methods (optional)
+### likes.key (optional)
 
-Enable or disable the plugin page methods.
+The content key for the likes counter.
+
+### panel.uri (optional)
+
+If you don't have the panel installed at `/panel` you need to use this option for the `nja` field to work. If you don't use the field it does not matter.
+
+### records.page.slug (optional)
+
+All likes/dislikes will be saved as files in a subfolder to the page to keep track on IP numbers to prevent multiple votes from the same visitor. It's possible to use a custom name for this page.
+
+### records.page.title (optional)
+
+The title for the likes/dislikes records panel page.
 
 ### snippet (optional)
 
 Set the name of the built in snippet when calling it. If set to `false` it will not set it at all.
 
-### panel.page (optional)
-
-All likes/dislikes will be saved as files in a subfolder to the page to keep track on IP numbers to prevent multiple votes from the same visitor. It's possible to use a custom name for this page.
-
 ## Changelog
+
+**0.4**
+
+- Added a new field called `nja`. It contains counters, delete records button and reset counter button.
+- Removed blueprint field definition because of the new field.
+- Removed option `plugin.nja.definitions`
+- New option `plugin.nja.likes.key`
+- New option `plugin.nja.dislikes.key`
+- New option `plugin.nja.panel.uri`
+- New option `plugin.nja.records.page.slug`
+- New option `plugin.nja.records.page.title`
+- Fixed javascript bug with like/dislike a subpage. It requires the script to be updated.
+- Fixes minor issues.
+- Multi language support
 
 **0.3**
 
