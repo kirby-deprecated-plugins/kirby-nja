@@ -10,7 +10,6 @@ class Get {
 	function value($id) {
 		if(!$this->panelPageExists($id)) return 0;
 		if(!$this->panelFileExists($id)) return 0;
-		echo 'sant' . (int)f::read($this->panelPath($id));
 		return (int)f::read($this->panelPath($id));
 	}
 

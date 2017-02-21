@@ -1,4 +1,4 @@
-<?php snippet('nja', ['page' => $page]); ?>
+<?php snippet('nja', ['page' => $page, 'likeButton' => true, 'dislikeButton' => true]); ?>
 
 <div class="nja">
 	<div class="nja-reset btn btn-rounded btn-negative">

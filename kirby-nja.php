@@ -6,7 +6,7 @@ include __DIR__ . DS . 'lib' . DS . 'set.php';
 include __DIR__ . DS . 'lib' . DS . 'save.php';
 include __DIR__ . DS . 'lib' . DS . 'delete.php';
 include __DIR__ . DS . 'lib' . DS . 'reset.php';
-include __DIR__ . DS . 'registry' . DS . 'page-methods.php';
+include __DIR__ . DS . 'lib' . DS . 'methods.php';
 
 if(c::get('plugin.nja.snippet', 'nja')) {
 	$kirby->set('snippet', c::get('plugin.nja.snippet', 'nja'), __DIR__ . '/registry/snippet.php');

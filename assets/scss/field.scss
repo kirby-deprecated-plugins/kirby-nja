@@ -16,6 +16,7 @@
   font-size: 14px;
   font-weight: normal;
   padding: .5em 1em;
+  user-select: none;
 }
 
 .nja-message-reset,
@@ -39,6 +40,7 @@
 		color: #b3000a;
 		font-size: 14px;
 		border: 1px solid #b3000a;
+		user-select: none;
 
 		&:hover {
 			background: #b3000a;
@@ -55,4 +57,9 @@
 			background: #000;
 		}
 	}
+}
+
+.nja .nja-active {
+	background: #b3000a;
+	color: #fff;
 }

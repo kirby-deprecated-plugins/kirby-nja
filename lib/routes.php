@@ -22,10 +22,9 @@ kirby()->routes(array(
 		if(!$Set->value($id, $value)) return $error;
 
 		$new_value = $Get->value($id);
-
-		//echo $old_value . " " . $new_value;
-
 		$Save->value($id, $old_value, $new_value);
+
+		kirby()->trigger('nja.create', array(array('value' => $value, 'id' => $id)));
 	}
   )
 ));
@@ -39,6 +38,10 @@ if(site()->user()) {
 			$Delete = new Delete();
 			$Delete->records($id);
 
+			if(c::get('plugin.nja.hooks', true)) {
+				kirby()->trigger('nja.delete', array($id));
+			}
+
 			if(get('redirect')) {
 				go($panel_uri . '/pages/' . $id . '/edit');
 			}
@@ -50,6 +53,8 @@ if(site()->user()) {
 	  		$panel_uri = c::get('plugin.nja.panel.uri', 'panel');
 			$Reset = new Reset();
 			$Reset->set($id);
+
+			kirby()->trigger('nja.reset', array($id));
 
 			if(get('redirect')) {
 				go('panel/pages/' . $id . '/edit');
