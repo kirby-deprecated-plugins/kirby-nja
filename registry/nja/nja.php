@@ -5,7 +5,7 @@ class NjaField extends BaseField {
 			'field.min.css',
 		),
 		'js' => array(
-			'script.js',
+			'dist/script.min.js',
 		),
 	);
 

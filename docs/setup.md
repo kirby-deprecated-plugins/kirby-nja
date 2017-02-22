@@ -23,18 +23,25 @@ nja.init({root: '<?php echo u(); ?>'});
 </script>
 ```
 
-**Callback (optional)**
-
-If you need to do something when the like/dislike is saved you can use a callback:
+### Options
 
 ```js
 nja.init({
   root: '<?php echo u(); ?>',
+  timeout: 4000,
   ajaxCallback: function(item, group, args) {
     console.log(args);
   }
 });
 ```
+
+#### `timeout`
+
+When a button is clicked it will be active right away. Later it checks if the request has been complete. If it has not it will fall back to not be active anymore. You can set a timeout value for that.
+
+#### `ajaxCallback`
+
+If you need to do something when the like/dislike is saved you can use a callback.
 
 - `group` is the button group object.
 - `item` is the clicked button object.

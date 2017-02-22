@@ -1,6 +1,6 @@
 {
   "name": "kirby-nja",
-  "version": "0.5",
+  "version": "0.6",
   "description": "Likes and dislikes without an external service for Kirby CMS",
   "license": "MIT",
   "type": "kirby-plugin"

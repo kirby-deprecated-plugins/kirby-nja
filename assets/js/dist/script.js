@@ -12,6 +12,7 @@ var nja = (function () {
 		var sets = document.querySelectorAll('[data-' + group_name + ']');
 		for(var i=0; i<sets.length; i++) {
 			var items = fn.getItems(sets[i]);
+			fn.addHistory(sets[i]);
 
 			for(var j=0; j<items.length; j++) {
 				fn.initCount(items[j]);
@@ -29,6 +30,7 @@ var nja = (function () {
 		fn.reset(group, count);
 		fn.toggle(item, group, active, count);
 		fn.ajax(item, group, active, count);
+		fn.timer(item, group,count);
 	};
 
 	// TOGGLE
@@ -74,9 +76,36 @@ var nja = (function () {
 		count_obj.innerHTML = count_obj.getAttribute('data-' + count_name);
 	};
 
+	//TIMER
+	fn.timer = function(item, group, count) {
+		setTimeout(fn.timeout.bind(null, item, group, count), fn.getTime());
+	};
+	fn.timeout = function(item, group, count) {
+		if(fn.isLoading(group)) {
+			var history = group.getAttribute('data-nja-history');
+
+			fn.reset(group, count);
+			group.setAttribute('data-nja-value', history);
+			new_item = group.querySelector('[data-nja-item="' + history + '"]');
+			group.querySelector('[data-nja-item="' + history + '"]').classList.add('nja-active');
+			fn.setCount(new_item, count);
+		}
+	};
+	fn.getTime = function() {
+		if(data && typeof data['timeout'] == 'number') {
+			return data['timeout'];
+		}
+		return 4000;
+	};
+
 	// ITEMS
 	fn.getItems = function(group) {
 		return group.querySelectorAll('[data-' + item_name + ']');
+	};
+
+	//HISTORY
+	fn.addHistory = function(group) {
+		group.setAttribute('data-nja-history', group.getAttribute('data-nja-value'));
 	};
 
 	// LOADING
@@ -85,6 +114,9 @@ var nja = (function () {
 	};
 	fn.removeLoading = function(group) {
 		group.classList.remove('nja-loading');
+	};
+	fn.isLoading = function(group) {
+		return group.classList.contains('nja-loading');
 	};
 
 	// ACTIVE
@@ -118,34 +150,38 @@ var nja = (function () {
 
 	// AJAX
 	fn.ajax = function(item, group, active, count, value) {
-		var xmlhttp = new XMLHttpRequest();
+		var xhr = new XMLHttpRequest();
 		var group_value = fn.getGroupValue(group);
 		var id = fn.getId(group);
+		var start = new Date().getTime();
 
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
-				if (xmlhttp.status == 200) {
-					fn.removeLoading(group);
-					if(data && typeof data['ajaxCallback'] == 'function') {
-						var args = [];
+		xhr.onreadystatechange = function() {
+			var end = new Date().getTime();
+			var time = end - start;
 
-						count = (!active) ? parseInt(count)+1 : count;
+			if(time < fn.getTime()) {
+				if (xhr.readyState == XMLHttpRequest.DONE ) {
+					if (xhr.status == 200) {
+						fn.removeLoading(group);
+						fn.addHistory(group);
+						if(data && typeof data['ajaxCallback'] == 'function') {
+							var args = [];
 
-						args['count'] = parseInt(count);
-						args['active'] = !active;
-						args['current'] = parseInt(fn.getValue(item));
-						args['selected'] = group_value;
-						args['name'] = id;
-						data.ajaxCallback(item, group, args);
+							count = (!active) ? parseInt(count)+1 : count;
+
+							args['count'] = parseInt(count);
+							args['active'] = !active;
+							args['current'] = parseInt(fn.getValue(item));
+							args['selected'] = group_value;
+							args['name'] = id;
+							data.ajaxCallback(item, group, args);
+						}
 					}
-				}
-				else {
 				}
 			}
 		};
-
-		xmlhttp.open('GET', data.root + '/nja/add/' + group_value + '/' + id, true);
-		xmlhttp.send();
+		xhr.open('GET', data.root + '/nja/add/' + group_value + '/' + id, true);
+		xhr.send();
 	};
 
 	return fn;

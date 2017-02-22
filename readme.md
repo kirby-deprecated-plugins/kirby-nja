@@ -1,6 +1,6 @@
 # Kirby Nja
 
-*Version 0.5 - Beta*
+*Version 0.6*
 
 **Like or dislike a page for Kirby CMS.**
 

@@ -1,5 +1,11 @@
 # Changelog
 
+**0.6**
+
+- Minified field js
+- Bug fixes
+- Added js option `timeout`
+
 **0.5**
 - Option added `plugin.nja.buttons.like`
 - Option added `plugin.nja.buttons.dislike`

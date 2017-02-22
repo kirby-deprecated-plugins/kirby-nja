@@ -44,8 +44,20 @@ gulp.task('js', function() {
 	;
 });
 
+// JS
+gulp.task('field_js', function() {
+	gulp.src('registry/nja/assets/js/src/**/*.js')
+		.pipe(concat('script.js'))
+		.pipe(uglify())
+		.pipe(rename({suffix: '.min'}))
+		.pipe(gulp.dest('registry/nja/assets/js/dist'))
+		.pipe(notify("JS generated!"))
+	;
+});
+
 // Default
 gulp.task('default',function() {
 	gulp.watch('assets/scss/**/*.scss',['css', 'field_css']);
 	gulp.watch('assets/js/src/**/*.js',['js']);
+	gulp.watch('registry/nja/assets/js/src/**/*.js',['field_js']);
 });

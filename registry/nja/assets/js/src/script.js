@@ -13,26 +13,20 @@
 			var root = $(this).attr('data-root');
 
 			$('.nja-reset').on('click', function() {
+				$('.nja-reset, .nja-delete').removeClass('nja-active');
+				$('.nja-message-delete, .nja-message-reset').hide();
 				if(!$(this).hasClass('nja-active')) {
 					$(this).addClass('nja-active');
-					$('.nja-message-delete').hide();
 					$('.nja-message-reset').show();
-				} else {
-					$(this).removeClass('nja-active');
-					$('.nja-message-delete').hide();
-					$('.nja-message-reset').hide();
 				}
 			});
 
 			$('.nja-delete').on('click', function() {
+				$('.nja-reset, .nja-delete').removeClass('nja-active');
+				$('.nja-message-delete, .nja-message-reset').hide();
 				if(!$(this).hasClass('nja-active')) {
 					$(this).addClass('nja-active');
 					$('.nja-message-delete').show();
-					$('.nja-message-reset').hide();
-				} else {
-					$(this).removeClass('nja-active');
-					$('.nja-message-delete').hide();
-					$('.nja-message-reset').hide();
 				}
 			});
 
