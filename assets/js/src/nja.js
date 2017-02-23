@@ -93,7 +93,7 @@ var nja = (function () {
 	};
 	fn.getTime = function() {
 		if(data && typeof data['timeout'] == 'number') {
-			return data['timeout'];
+			return data['timeout'] * 1000;
 		}
 		return 4000;
 	};

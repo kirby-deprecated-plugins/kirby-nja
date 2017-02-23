@@ -1,7 +1,16 @@
 # Changelog
 
+**0.7**
+
+- Uninstall route at `nja/uninstall/[your-username]`.
+- Automatic cleanup feature added. 
+- New option `plugin.nja.timeout` added.
+- New option `plugin.nja.cleanup` added.
+- Bug fixes
+
 **0.6**
 
+- Jumpback feature if ajax fails added.
 - Minified field js
 - Bug fixes
 - Added js option `timeout`

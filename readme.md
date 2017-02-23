@@ -1,6 +1,6 @@
 # Kirby Nja
 
-*Version 0.6*
+*Version 0.7*
 
 **Like or dislike a page for Kirby CMS.**
 
@@ -21,6 +21,7 @@
 - [Methods](docs/methods.md)
 - [Hooks](docs/hooks.md)
 - [Options](docs/options.md)
+- [Uninstall](docs/uninstall.md)
 - [Changelog](docs/changelog.md)
 
 ## Requirements

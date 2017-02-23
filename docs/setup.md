@@ -78,4 +78,4 @@ fields:
     type: nja
 ```
 
-![Field](docs/field.png)
+![](field.png)
